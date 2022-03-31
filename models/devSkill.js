@@ -12,7 +12,8 @@ const devSkills = [
   module.exports = {
     getAll,
     getOne, 
-    create
+    create,
+    deleteOne
   };
 
 
@@ -28,4 +29,9 @@ const devSkills = [
   function create(devSkill) {
     devSkill.id = Date.now() % 1000000;
     devSkills.push(devSkill);
+  }
+
+  function deleteOne(id){
+    const idx = devSkills.findIndex(devSkill => devSkill.id === parseInt(id));
+    devSkills.splice(idx, 1); 
   }

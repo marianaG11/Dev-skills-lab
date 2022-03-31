@@ -12,7 +12,7 @@ router.get('/new', devSkillController.new);
 
 router.get('/:id', devSkillController.show);
 router.post('/', devSkillController.create);
-
+router.delete('/:id', devSkillController.delete);
 
 
 

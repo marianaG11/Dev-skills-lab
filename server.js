@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var methodOverride = require('method-override');
 var indexRouter = require('./routes/index');
 var devSkillsRouter = require('./routes/devSkills');
 
@@ -18,12 +18,13 @@ app.use(function(req, res, next){
   next(); //pases into next app.use
 })
 
-//middleware
+//middleware pipeline
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 //routers are mounted in the middleware pipeline with app.use method
 app.use('/', indexRouter);

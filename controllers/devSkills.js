@@ -5,8 +5,16 @@ const DevSkill = require('../models/devSkill');
     index, 
     show,
     new: newDevSkill,
-    create
+    create,
+    delete: deleteDevSkill
   }
+
+
+  function deleteDevSkill(req, res){
+    DevSkill.deleteOne(req.params.id); //this is the id of the todo we are deleting
+    res.redirect('/devSkills')
+  }
+
 
   function create(req, res){
     console.log(req.body, '<- req.body, contents of the form')
